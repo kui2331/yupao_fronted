@@ -55,17 +55,12 @@
   resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.7.tgz"
   integrity sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==
 
-"@vant/icons@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/@vant/icons/-/icons-1.8.0.tgz"
-  integrity sha512-sKfEUo2/CkQFuERxvkuF6mGQZDKu3IQdj5rV9Fm0weJXtchDSSQ+zt8qPCNUEhh9Y8shy5PzxbvAfOOkCwlCXg==
-
-"@vant/popperjs@^1.2.1":
+"@vant/popperjs@^1.3.0":
   version "1.3.0"
   resolved "https://registry.npmjs.org/@vant/popperjs/-/popperjs-1.3.0.tgz"
   integrity sha512-hB+czUG+aHtjhaEmCJDuXOep0YTZjdlRR+4MSmIFnkCQIxJaXLQdSsR90XWvAI2yvKUI7TCGqR8pQg2RtvkMHw==
 
-"@vant/use@^1.4.2":
+"@vant/use@^1.6.0":
   version "1.6.0"
   resolved "https://registry.npmjs.org/@vant/use/-/use-1.6.0.tgz"
   integrity sha512-PHHxeAASgiOpSmMjceweIrv2AxDZIkWXyaczksMoWvKV2YAYEhoizRuk/xFnKF+emUIi46TsQ+rvlm/t2BBCfA==
@@ -193,7 +188,7 @@
     "@vue/compiler-ssr" "3.5.14"
     "@vue/shared" "3.5.14"
 
-"@vue/shared@^3.5.0", "@vue/shared@3.5.14":
+"@vue/shared@^3.5.0", "@vue/shared@^3.5.13", "@vue/shared@3.5.14":
   version "3.5.14"
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.5.14.tgz"
   integrity sha512-oXTwNxVfc9EtP1zzXAlSlgARLXNC84frFYkS0HHz0h3E4WZSP9sywqjqzGCP9Y34M8ipNmd380pVgmMuwELDyQ==
@@ -778,14 +773,14 @@ upper-case@^2.0.2:
   dependencies:
     tslib "^2.0.3"
 
-vant@^3.6.4:
-  version "3.6.16"
-  resolved "https://registry.npmjs.org/vant/-/vant-3.6.16.tgz"
-  integrity sha512-9pZao0NEeZQ0ZEb6N7SZxtqcdTp24o8IizhZS1G+FtStlXeKOFzCl+Nf1pIWRneQ9Kn+K+mNrfi2eiIZjVVppw==
+vant@^4.9.19:
+  version "4.9.19"
+  resolved "https://registry.npmjs.org/vant/-/vant-4.9.19.tgz"
+  integrity sha512-fRt32XI0fO0vB3/YGhZOpTnHKjplUiNuA05yZy8rPZntmbQE5GA57Y7iC7jmMDxSOaLebovynhgCvWnyk9zmDw==
   dependencies:
-    "@vant/icons" "^1.8.0"
-    "@vant/popperjs" "^1.2.1"
-    "@vant/use" "^1.4.2"
+    "@vant/popperjs" "^1.3.0"
+    "@vant/use" "^1.6.0"
+    "@vue/shared" "^3.5.13"
 
 vite-plugin-style-import@1.4.1:
   version "1.4.1"
@@ -826,7 +821,7 @@ vue-tsc@^2.2.8:
     "@volar/typescript" "~2.4.11"
     "@vue/language-core" "2.2.10"
 
-vue@^3.0.0, vue@^3.2.25, vue@^3.2.41, vue@^3.4.0, "vue@2 || 3", vue@3.5.14:
+vue@^3.0.0, vue@^3.2.25, vue@^3.4.0, vue@^3.5.13, "vue@2 || 3", vue@3.5.14:
   version "3.5.14"
   resolved "https://registry.npmjs.org/vue/-/vue-3.5.14.tgz"
   integrity sha512-LbOm50/vZFG6Mhy6KscQYXZMQ0LMCC/y40HDJPPvGFQ+i/lUH+PJHR6C3assgOQiXdl6tAfsXHbXYVBZZu65ew==

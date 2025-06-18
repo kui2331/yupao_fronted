@@ -1,12 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'vant/lib/index.css';
-import {Button, NavBar, Icon, Tabbar, TabbarItem} from "vant";
+import {Button, NavBar} from "vant";
 
-const app = createApp(App);
+createApp(App).mount('#app')
 app.use(Button);
 app.use(NavBar);
-app.use(Icon);
-app.use(Tabbar);
-app.use(TabbarItem);
 app.mount('#app');
