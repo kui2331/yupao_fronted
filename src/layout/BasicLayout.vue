@@ -23,13 +23,17 @@
 </template>
 
 <script setup>
-import {Toast} from "vant";
 
+import {useRouter} from "vue-router";
 
-const onClickLeft = () => alert('左');
-const onClickRight = () => alert("右");
+const router = useRouter();
 
-
+const onClickLeft = () => {
+  router.back();
+}
+const onClickRight = () => {
+  router.push('/search');
+}
 
 </script>
 
