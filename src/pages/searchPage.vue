@@ -25,6 +25,11 @@
       v-model:main-active-index="activeIndex"
       :items="tagList"
   />
+
+  <div style="padding: 16px">
+    <van-button block type="primary" @click="doSearchResult">搜索</van-button>
+  </div>
+  <div style="padding: 16px"/>
 </template>
 
 <script setup lang="ts">
@@ -78,7 +83,17 @@ const onCancel = () => {
   tagList.value = originTagList;
 };
 
+import {useRouter} from 'vue-router';
+const router = useRouter();
 
+const doSearchResult = () => {
+  router.push({
+    path: '/user/list',
+    query: {
+      tags: activeIds.value
+    }
+  })
+}
 //已选中的标签数组
 const activeIds = ref([]);
 
