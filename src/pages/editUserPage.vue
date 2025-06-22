@@ -1,13 +1,10 @@
 <template>
   <van-form @submit="onSubmit">
-    <!-- 表单项的值会绑定到 editUser 对象的 currentValue 属性上。
-     name 属性是表单项的名称标识符，用于在表单提交时识别该表单项。
-     label 属性是表单项的标签文本，用于给表单项添加描述性的文本。
-     placeholder作为占位符-->
     <van-field
         v-model="editUser.currentValue"
         :name="editUser.editKey"
         :label="editUser.editName"
+        :placeholder="`请输入${editUser.editName}`"
     />
     <div style="margin: 16px;">
       <van-button round block type="primary" native-type="submit">
@@ -18,19 +15,44 @@
 </template>
 
 <script setup lang="ts">
-
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
+import myAxios from "../plugins/myAxios";
+
+import {getCurrentUser} from "../services/user";
+import {showFailToast, showSuccessToast} from "vant/es";
 
 const route = useRoute();
+const router =useRouter();
+
 const editUser = ref({
   editKey: route.query.editKey,
   currentValue: route.query.currentValue,
   editName: route.query.editName,
 })
-const onSubmit = (values) => {
-  //todo 把editKey currentValue editName提交到后台
-  console.log('onSubmit',values);
-}
+
+// 不可以写在外面，否则页面不显示内容，还没有报错信息，原因未知
+// const currentUser = await getCurrentUser();
+
+const onSubmit = async () => {
+  // 异步方法必须添加 await 才可以拿到数据, 否则拿到的是 promise 对象
+  const currentUser = await getCurrentUser();
+  console.log("-------UserEditPage", currentUser);
+  const res = await myAxios.post("/user/update", {
+    "id": currentUser.id,
+    [editUser.value.editKey]: editUser.value.currentValue // 动态取值
+  })
+  console.log("修改用户信息", res);
+  if (res.code === 0 && res.data > 0) {
+    showSuccessToast('修改成功')
+    router.back()
+  }else {
+    showFailToast('修改失败');
+  }
+};
 
 </script>
+
+<style scoped>
+
+</style>
