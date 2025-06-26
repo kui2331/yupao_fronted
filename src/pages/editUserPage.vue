@@ -40,7 +40,7 @@ const onSubmit = async () => {
   console.log("-------UserEditPage", currentUser);
   const res = await myAxios.post("/user/update", {
     "id": currentUser.id,
-    [editUser.value.editKey]: editUser.value.currentValue // 动态取值
+    [editUser.value.editKey]: editUser.value.currentValue // 动态取值！！！！！！！！！！！！！！！！！
   })
   console.log("修改用户信息", res);
   if (res.code === 0 && res.data > 0) {

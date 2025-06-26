@@ -1,6 +1,6 @@
 <template>
   <van-nav-bar
-      title="标题"
+      :title="title"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
@@ -25,8 +25,22 @@
 <script setup>
 
 import {useRouter} from "vue-router";
+import {ref} from "vue";
 
 const router = useRouter();
+const DEFAULT_TITLE = 'Yupao H5';
+const title = ref(DEFAULT_TITLE);
+
+/**
+ * 根据路由变化设置页面标题
+ */
+router.beforeEach((to, from) => {
+  const toPath = to.path;
+  const route = router.find((router) => {
+    return to.path === to.path;
+  })
+  title.value = route?.title ?? DEFAULT_TITLE;
+})
 
 const onClickLeft = () => {
   router.back();
