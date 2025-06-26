@@ -1,5 +1,5 @@
 <template>
-  <van-cell center title="心动模式">
+  <van-cell center title="相似推荐">
     <template #right-icon>
       <van-switch v-model="isMatchMode" size="24" />
     </template>
