@@ -1,7 +1,6 @@
 <template>
   <van-skeleton title avatar :row="3" :loading="props.loading" v-for="user in props.userList">
     <van-card
-        v-for="user in userList"
         :desc="user.profile"
         :title="`${user.username} (${user.planetCode})`"
         :thumb="user.avatarUrl"
@@ -34,8 +33,4 @@ const props= withDefaults(defineProps<UserCardListProps>(),{
 
 </script>
 <style scoped>
-/* 标签颜色*/
-.van-tag--danger.van-tag--plain {
-  color: #002fff;
-}
 </style>

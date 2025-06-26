@@ -29,6 +29,7 @@ const editUser = ref({
   editKey: route.query.editKey,
   currentValue: route.query.currentValue,
   editName: route.query.editName,
+  index: route.query.index
 })
 
 // 不可以写在外面，否则页面不显示内容，还没有报错信息，原因未知
@@ -38,9 +39,16 @@ const onSubmit = async () => {
   // 异步方法必须添加 await 才可以拿到数据, 否则拿到的是 promise 对象
   const currentUser = await getCurrentUser();
   console.log("-------UserEditPage", currentUser);
+  if(editUser.value.index&&editUser.value.index>=0) {
+    if (currentUser.tags) {
+      currentUser.tags = JSON.parse(currentUser.tags);
+    }
+    currentUser.tags[editUser.value.index] = editUser.value.currentValue;
+    editUser.value.currentValue = JSON.stringify(currentUser.tags);
+  }
   const res = await myAxios.post("/user/update", {
     "id": currentUser.id,
-    [editUser.value.editKey]: editUser.value.currentValue // 动态取值！！！！！！！！！！！！！！！！！
+    [editUser.value.editKey]: editUser.value.currentValue // 动态取值
   })
   console.log("修改用户信息", res);
   if (res.code === 0 && res.data > 0) {

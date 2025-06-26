@@ -5,11 +5,17 @@
     <van-cell title="头像" is-link to="/user/edit" >
       <img style="height: 48px" :src="user.avatarUrl">
     </van-cell>
-    <van-cell title="性别" is-link to="/user/edit" :value="user.gender" @click="toEdit('gender','性别',user.gender)" />
-    <van-cell title="电话" is-link to="/user/edit" :value="user.phone" @click="toEdit('phone','电话',user.phone)"/>
-    <van-cell title="邮箱" is-link to="/user/edit" :value="user.email" @click="toEdit('email','邮箱',user.email)"/>
+    <van-cell title="性别" is-link to="/user/edit" :value="user.gender" @click="toEdit('gender','性别',user.gender,-1)" />
+    <van-cell title="电话" is-link to="/user/edit" :value="user.phone" @click="toEdit('phone','电话',user.phone,-1)"/>
+    <van-cell title="邮箱" is-link to="/user/edit" :value="user.email" @click="toEdit('email','邮箱',user.email,-1)"/>
     <van-cell title="星球编号" :value="user.planetCode" />
     <van-cell title="注册时间" :value="user.createTime"  />
+    <van-tabs swipeable>
+      <van-tab v-for="index in 5" :title="'标签 ' + index">
+        <van-cell title="" is-link to="/user/edit" :value="user.tags[index]" @click="toEdit('tags','标签',user.tags[index],index)" />
+      </van-tab>
+    </van-tabs>
+
   </template>
 </template>
 
@@ -42,15 +48,19 @@ onMounted(async () =>{
   //   showFailToast('获取用户信息失败')
   // }
   user.value = await getCurrentUser();
+  if (user.value.tags) {
+    user.value.tags = JSON.parse(user.value.tags);
+  }
 })
 
-const toEdit = (editKey: string,editName: string,currentValue: string) =>{
+const toEdit = (editKey: string,editName: string,currentValue: string,index?: number) =>{
   router.push({
     path:'/user/edit',
     query: {
       editKey,
       editName,
       currentValue,
+      index,
     }
   })
 }
