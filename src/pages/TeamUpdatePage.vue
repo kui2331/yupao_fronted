@@ -27,8 +27,8 @@
         />
         <van-popup v-model:show="showPicker" position="bottom">
           <van-date-picker
-              v-model="addTeamData.expireTime"
               @confirm="showPicker = false"
+              @cancel="showPicker = false"
               type="datetime"
               title="请选择过期时间"
               :min-date="minDate"

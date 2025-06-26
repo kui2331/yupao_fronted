@@ -9,6 +9,7 @@
     <van-cell title="修改信息" is-link to="/user/update" />
     <van-cell title="我创建的队伍" is-link to="/team/create" />
     <van-cell title="我加入的队伍" is-link to="/team/join" />
+    <van-cell title="退出登录" is-link to="/user/login" @click="logout"/>
   </template>
 </template>
 
@@ -16,6 +17,9 @@
 import {useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import {getCurrentUser} from "../services/user";
+import moment from "moment/moment";
+import myAxios from "../plugins/myAxios";
+import {showFailToast, showSuccessToast} from "vant/es";
 
 const user = ref();
 
@@ -24,6 +28,15 @@ onMounted(async ()=>{
 })
 
 const router = useRouter();
+
+const logout = async () => {
+  const res = await myAxios.post("/user/logout");
+  if (res?.code === 0 && res.data) {
+    showSuccessToast('退出成功');
+  } else {
+    showFailToast('退出失败');
+  }
+}
 
 const toEdit = (editKey: string, editName: string, currentValue: string) => {
   router.push({
